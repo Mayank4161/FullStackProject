@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context reloadable="true" antiResourceLocking="true" antiJARLocking="true">
+    <!-- Enable automatic reloading when files change -->
+    <WatchedResource>WEB-INF/web.xml</WatchedResource>
+    <WatchedResource>WEB-INF/tomcat-web.xml</WatchedResource>
+    <WatchedResource>${catalina.base}/conf/web.xml</WatchedResource>
+    
+    <!-- Monitor JSP files for changes -->
+    <WatchedResource>*.jsp</WatchedResource>
+    <WatchedResource>*.jspx</WatchedResource>
+    
+    <!-- Monitor static resources -->
+    <WatchedResource>WEB-INF/classes</WatchedResource>
+    <WatchedResource>WEB-INF/lib</WatchedResource>
+    
+    <!-- Database connection pool configuration -->
+    <Resource name="jdbc/companywebappnew" 
+              auth="Container" 
+              type="javax.sql.DataSource"
+              maxTotal="20" 
+              maxIdle="10" 
+              maxWaitMillis="-1"
+              username="root" 
+              password="Mayank" 
+              driverClassName="com.mysql.cj.jdbc.Driver"
+              url="jdbc:mysql://localhost:3306/companywebappnew?useSSL=false&amp;serverTimezone=UTC"/>
+</Context> 

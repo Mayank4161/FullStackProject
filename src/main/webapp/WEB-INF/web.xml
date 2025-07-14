@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="image.pnghttps://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
+
+    <display-name>Company Web Application</display-name>
+    
+    <!-- Welcome file list -->
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+    
+    <!-- Error page mappings -->
+    <error-page>
+        <error-code>404</error-code>
+        <location>/error/404.jsp</location>
+    </error-page>
+    
+    <error-page>
+        <error-code>500</error-code>
+        <location>/error/500.jsp</location>
+    </error-page>
+    
+    <error-page>
+        <exception-type>java.lang.Exception</exception-type>
+        <location>/error/exception.jsp</location>
+    </error-page>
+    
+    <!-- Session configuration -->
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+    
+    <!-- Character encoding filter -->
+    <filter>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+    
+    <filter-mapping>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    
+    <!-- Admin authentication filter is configured via @WebFilter annotation -->
+    
+    <!-- Servlet mappings -->
+    <servlet>
+        <servlet-name>ContactServlet</servlet-name>
+        <servlet-class>com.companywebappnew.servlets.ContactServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>ContactServlet</servlet-name>
+        <url-pattern>/contact</url-pattern>
+    </servlet-mapping>
+    
+    <!-- NewsletterServlet mapping removed: handled by annotation only -->
+    
+    <servlet>
+        <servlet-name>AdminLoginServlet</servlet-name>
+        <servlet-class>com.companywebappnew.servlets.AdminLoginServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>AdminLoginServlet</servlet-name>
+        <url-pattern>/admin/login</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>AdminLogoutServlet</servlet-name>
+        <servlet-class>com.companywebappnew.servlets.AdminLogoutServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>AdminLogoutServlet</servlet-name>
+        <url-pattern>/admin/logout</url-pattern>
+    </servlet-mapping>
+    
+    <!-- ClientServlet and ProjectServlet mappings removed: handled by annotation only -->
+    
+    <servlet>
+        <servlet-name>ContactManagementServlet</servlet-name>
+        <servlet-class>com.companywebappnew.servlets.ContactManagementServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>ContactManagementServlet</servlet-name>
+        <url-pattern>/admin/contacts</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>NewsletterManagementServlet</servlet-name>
+        <servlet-class>com.companywebappnew.servlets.NewsletterManagementServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>NewsletterManagementServlet</servlet-name>
+        <url-pattern>/admin/newsletter</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>DatabaseTest</servlet-name>
+        <servlet-class>com.companywebappnew.util.DatabaseTest</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>DatabaseTest</servlet-name>
+        <url-pattern>/DatabaseTest</url-pattern>
+    </servlet-mapping>
+    
+    <!-- DiagnosticServlet mapping removed: handled by annotation only -->
+    
+    <servlet>
+        <servlet-name>DashboardJsp</servlet-name>
+        <jsp-file>/admin/dashboard.jsp</jsp-file>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>DashboardJsp</servlet-name>
+        <url-pattern>/admin/dashboard</url-pattern>
+    </servlet-mapping>
+    
+    <!-- Removed duplicate ClientServlet mapping to avoid conflict with @WebServlet annotation -->
+    
+</web-app> 
